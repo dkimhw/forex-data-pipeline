@@ -111,8 +111,8 @@ with DAG(
   # Sending a notification by email
   # https://stackoverflow.com/questions/51829200/how-to-set-up-airflow-send-email
   sending_email_notification = EmailOperator(
-    task_id="sending_email",
-    to="airflow_course@yopmail.com",
+    task_id="airflow tasks test forex_data_pipeline sending_email 2023-03-03",
+    to="dkhw90@gmail.com",
     subject="forex_data_pipeline",
     html_content="""
         <h3>forex_data_pipeline succeeded</h3>
