@@ -36,7 +36,7 @@ RUN apt-get update -y && \
     && apt-get autoremove -yqq --purge && apt-get clean
 
 # Upgrade pip
-# Create airflow user 
+# Create airflow user
 # Install apache airflow with subpackages
 RUN pip install --upgrade "pip==20.2.4" && \
     useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow && \
@@ -46,6 +46,7 @@ RUN pip install --upgrade "pip==20.2.4" && \
     pip install apache-airflow-providers-apache-spark==2.0.1 && \
     pip install apache-airflow-providers-slack==4.0.1 && \
     pip install apache-airflow-providers-http==2.0.1
+
 
 # Copy the airflow.cfg file (config)
 #COPY ./config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
@@ -70,5 +71,3 @@ EXPOSE 8080
 
 # Execute start-airflow.sh
 CMD [ "./start-airflow.sh" ]
-
-    
