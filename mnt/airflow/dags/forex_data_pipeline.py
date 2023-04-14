@@ -111,10 +111,13 @@ with DAG(
   # Sending a notification by email
   # https://stackoverflow.com/questions/51829200/how-to-set-up-airflow-send-email
   sending_email_notification = EmailOperator(
-    task_id="airflow tasks test forex_data_pipeline sending_email 2023-03-03",
+    task_id="sending_email_notification",
     to="dkhw90@gmail.com",
     subject="forex_data_pipeline",
     html_content="""
         <h3>forex_data_pipeline succeeded</h3>
     """
   )
+
+  is_forex_rates_available >> is_forex_file_available >> downloading_rates >> saving_rates
+  saving_rates >> creating_forex_rates_table >> forex_processing >> sending_email_notification
